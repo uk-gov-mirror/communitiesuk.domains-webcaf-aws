@@ -7,7 +7,6 @@ from zoneinfo import ZoneInfo
 from django import template
 from django.forms import Form
 from django.utils import timezone
-from django.conf import settings
 from slugify import slugify
 
 from webcaf.webcaf.caf.util import IndicatorStatusChecker

@@ -1,8 +1,8 @@
 from unittest import TestCase
 
 from webcaf.webcaf.caf.util import IndicatorStatusChecker
-from webcaf.webcaf.utils.data_analysis import transform_assessment, transform_review
 from webcaf.webcaf.models import Configuration
+from webcaf.webcaf.utils.data_analysis import transform_assessment, transform_review
 
 
 def _profile_met_callback(outcome_code: str, status: str | None):

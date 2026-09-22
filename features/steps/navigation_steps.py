@@ -7,7 +7,6 @@ from collections import defaultdict
 from pathlib import Path
 from time import sleep
 from typing import Any, Literal, Optional
-from webcaf.webcaf.models import Configuration
 
 from behave import step, then
 from behave.runner import Context
@@ -16,6 +15,7 @@ from pypdf import PdfReader
 
 from features.environment import get_current_assessment_period
 from features.util import delete_model, exists_model, get_model, run_async_orm
+from webcaf.webcaf.models import Configuration
 
 
 @step('a button with text "{text}"')
