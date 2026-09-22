@@ -7,6 +7,7 @@ from collections import defaultdict
 from pathlib import Path
 from time import sleep
 from typing import Any, Literal, Optional
+from webcaf.webcaf.models import Configuration
 
 from behave import step, then
 from behave.runner import Context
@@ -260,7 +261,7 @@ def create_new_assessment(
             assessment_period=get_current_assessment_period()[0],
             status=status,
             review_type="independent",
-            framework="caf32",
+            framework=Configuration.objects.get_default_config().get_default_framework(),
             assessments_data=initial_assessment_data,
         )
         assessment.save()

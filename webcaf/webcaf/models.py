@@ -4,6 +4,7 @@ from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from typing import Any, Literal
 from zoneinfo import ZoneInfo
+from webcaf.webcaf.models import Configuration
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -201,7 +202,7 @@ class Assessment(ReferenceGeneratorMixin, models.Model):
     status = models.CharField(max_length=255, choices=STATUS_CHOICES, default="draft")
     system = models.ForeignKey(System, on_delete=models.CASCADE, related_name="assessments")
     reference = models.CharField(max_length=20, null=True, unique=True)
-    framework = models.CharField(max_length=255, choices=FRAMEWORK_CHOICES, default="caf32")
+    framework = models.CharField(max_length=255, choices=FRAMEWORK_CHOICES, default=Configuration.objects.get_default_config().get_default_framework())
     caf_profile = models.CharField(
         max_length=255,
         choices=PROFILE_CHOICES,

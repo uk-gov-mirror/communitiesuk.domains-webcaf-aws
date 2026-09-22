@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from webcaf.webcaf.caf.util import IndicatorStatusChecker
 from webcaf.webcaf.utils.data_analysis import transform_assessment, transform_review
-from django.conf import settings
+from webcaf.webcaf.models import Configuration
 
 
 def _profile_met_callback(outcome_code: str, status: str | None):
@@ -15,7 +15,9 @@ def _profile_met_callback(outcome_code: str, status: str | None):
     """
     from webcaf.webcaf.frameworks import routers
 
-    router = routers[settings.WEBCAF_VERSION]
+    configuration = Configuration.objects.get_default_config()
+    framework_id = configuration.get_default_framework()
+    router = routers[framework_id]
     principal = router.get_section(outcome_code[0])["principles"][outcome_code[:2]]  # type: ignore
     outcome = principal["outcomes"][outcome_code]
     min_profile_requirement = outcome.get("min_profile_requirement")
