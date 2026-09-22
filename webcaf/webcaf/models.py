@@ -4,7 +4,6 @@ from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from typing import Any, Literal
 from zoneinfo import ZoneInfo
-from webcaf.webcaf.models import Configuration
 
 from django.conf import settings
 from django.contrib.auth.models import User
